@@ -4,27 +4,30 @@
 
 Ziel war es, mit dem Pilz-Datensatz vorherzusagen, ob ein Pilz essbar oder giftig ist. Die Zielvariable heißt `poison`, mit `e` für essbar und `p` für giftig.
 
-## Daten
-
-Der Datensatz enthält 8.124 Zeilen und fast nur kategoriale Merkmale. Beim Laden gab es ein paar kleine Probleme: Der Trenner ist `~` und nicht Komma, außerdem hatten drei Zeilen leere Zusatzfelder am Ende. Diese wurden beim Laden entfernt. Einige auffällige Werte wie `d**`, `0.34`, `0.3` und `0.4` wurden als unbekannt (`?`) behandelt.
-
 ## Vorgehen
 
-Wir haben zuerst die Daten angeschaut, die Zielvariable geprüft und fehlende bzw. auffällige Werte untersucht. Danach haben wir die Daten für das maschinelle Lernen vorbereitet:
+Wir haben uns an der Struktur aus dem Unterrichtsnotebook zur supervised classification orientiert:
 
-- `veil-type` entfernt, weil diese Spalte nur einen Wert hat
-- `?` als fehlende Werte behandelt
-- kategoriale Merkmale mit One-Hot-Encoding umgewandelt
-- Entscheidungsbaum als Modell verwendet
+- Daten laden
+- Daten kurz explorieren
+- Input und Output trennen
+- Train/Test-Split erstellen
+- Daten vorverarbeiten
+- Entscheidungsbaum und KNN trainieren
+- Ergebnisse mit F1, Recall, Precision und Accuracy bewerten
+
+## Datenprobleme
+
+Die Datei war mit `~` getrennt und nicht mit Komma. Außerdem gab es drei Zeilen mit leeren Zusatzfeldern am Ende. Diese wurden beim Laden entfernt. Auffällige Werte wie `d**`, `0.34`, `0.3` und `0.4` wurden als unbekannte Werte behandelt.
 
 ## Ergebnis
 
-Das einfache Vergleichsmodell liegt bei ungefähr 52% Genauigkeit. Das Entscheidungsbaum-Modell erreicht auf dem Testset fast perfekte Ergebnisse. Das liegt daran, dass manche Merkmale, besonders `odor`, sehr stark mit der Klasse zusammenhängen.
+Der Entscheidungsbaum und KNN erreichen sehr gute Ergebnisse. Das liegt vermutlich daran, dass manche Merkmale, zum Beispiel `odor`, sehr stark mit der Zielvariable zusammenhängen.
 
 ## Fazit
 
-Das Projekt zeigt, wie man einen kategorialen Datensatz lädt, einfache Datenprobleme bereinigt und ein Klassifikationsmodell mit scikit-learn trainiert. Für unser Projekt ist der Entscheidungsbaum eine gute Wahl, weil er gute Ergebnisse liefert und noch relativ leicht erklärbar ist.
+Der Entscheidungsbaum ist für unser Projekt die passendste Lösung, weil er gute Ergebnisse liefert und noch relativ einfach erklärbar ist. Bei Pilzen ist besonders der Recall für giftige Pilze wichtig, weil ein giftiger Pilz nicht als essbar vorhergesagt werden sollte.
 
 ## LLM-Nutzung
 
-Wir haben ein LLM zur Unterstützung bei Struktur, Datenprüfung und Formulierungen genutzt. Die Gruppe ist verantwortlich dafür, den Code und die Ergebnisse erklären zu können.
+Wir haben ein LLM zur Unterstützung bei Struktur, Formulierungen und Datenprüfung genutzt. Die Lösung wurde bewusst am Kursnotebook orientiert und einfach gehalten.

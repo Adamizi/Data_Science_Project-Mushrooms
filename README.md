@@ -12,4 +12,4 @@ Gruppenprojekt zur Klassifikation von Pilzen als essbar oder giftig.
 
 ## Kurzbeschreibung
 
-Das Projekt nutzt einen Entscheidungsbaum, um die Zielvariable `poison` vorherzusagen. Vorher werden einfache Datenprobleme bereinigt und kategoriale Variablen mit One-Hot-Encoding vorbereitet.
+Die Lösung orientiert sich am Unterrichtsnotebook `03_supervised_classification.ipynb`. Es werden ein Entscheidungsbaum und KNN verwendet, um die Zielvariable `poison` vorherzusagen.
