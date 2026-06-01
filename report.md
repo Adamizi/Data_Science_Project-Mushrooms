@@ -1,31 +1,30 @@
 # Abschlussbericht: Mushroom Classification
 
-## Problemstellung
+## Ziel
 
-Ziel des Projekts ist die Vorhersage, ob ein Pilz essbar (`e`) oder giftig (`p`) ist. Dafür werden 22 kategoriale Merkmale genutzt, zum Beispiel Geruch, Lamellenfarbe, Sporenabdruckfarbe, Population und Habitat.
+Ziel war es, mit dem Mushroom-Datensatz vorherzusagen, ob ein Pilz essbar oder giftig ist. Die Zielvariable heißt `poison`, mit `e` für essbar und `p` für giftig.
 
-## Datenqualität
+## Daten
 
-Die Rohdatei nutzt `~` als Separator. Beim Laden wurden drei Zeilen mit zusätzlichen leeren Feldern am Zeilenende gefunden und konservativ auf die erwarteten 23 Felder gekürzt. Zusätzlich wurden einzelne ungültige Kategorien gefunden, darunter `d**` im Habitat und numerische Werte wie `0.34`, `0.3` und `0.4` in kategorialen Spalten. Diese Werte wurden als unbekannt (`?`) behandelt.
+Der Datensatz enthält 8.124 Zeilen und fast nur kategoriale Merkmale. Beim Laden gab es ein paar kleine Probleme: Der Trenner ist `~` und nicht Komma, außerdem hatten drei Zeilen leere Zusatzfelder am Ende. Diese wurden beim Laden entfernt. Einige auffällige Werte wie `d**`, `0.34`, `0.3` und `0.4` wurden als unbekannt (`?`) behandelt.
 
-Der Datensatz enthält 8.124 Zeilen. Die Zielklassen sind nahezu ausgeglichen: 4.208 essbare und 3.916 giftige Pilze. Die Spalte `veil-type` ist konstant und wurde für das Modell entfernt. `stalk-root` enthält viele `?`-Werte, die in der Pipeline imputiert werden.
+## Vorgehen
 
-## Machine-Learning-Strategie
+Wir haben zuerst die Daten angeschaut, die Zielvariable geprüft und fehlende bzw. auffällige Werte untersucht. Danach haben wir die Daten für Machine Learning vorbereitet:
 
-Das Projekt wurde als überwachtes binäres Klassifikationsproblem umgesetzt. Alle Input-Features sind kategorial. Die Preprocessing-Pipeline ersetzt unbekannte Werte, imputiert kategoriale Werte mit der häufigsten Ausprägung und nutzt One-Hot-Encoding.
-
-Verglichen wurden eine Dummy-Baseline, ein Decision Tree, Logistic Regression und Random Forest. Der Decision Tree eignet sich besonders gut als Hauptmodell, weil er sehr gut erklärbar ist und regelartige Entscheidungen sichtbar macht.
+- `veil-type` entfernt, weil diese Spalte nur einen Wert hat
+- `?` als fehlende Werte behandelt
+- kategoriale Features mit One-Hot-Encoding umgewandelt
+- Decision Tree als Modell verwendet
 
 ## Ergebnis
 
-Die Dummy-Baseline erreicht nur ca. 51,8% Accuracy. Der Decision Tree erreicht in der 5-fachen Cross-Validation ca. 99,95% Accuracy und ca. 99,90% Recall für die giftige Klasse. Random Forest erreicht im Testlauf 100% auf allen Metriken.
-
-Für diese Aufgabe ist Recall der giftigen Klasse besonders wichtig, weil ein giftiger Pilz, der als essbar klassifiziert wird, der gefährlichste Fehler wäre.
+Die einfache Baseline liegt bei ungefähr 52% Accuracy. Das Decision-Tree-Modell erreicht auf dem Testset fast perfekte Ergebnisse. Das liegt daran, dass manche Merkmale, besonders `odor`, sehr stark mit der Klasse zusammenhängen.
 
 ## Fazit
 
-Nach Bereinigung und Preprocessing ist der Datensatz sehr gut klassifizierbar. Das finale empfohlene Modell ist der Decision Tree, da er nahezu perfekte Leistung mit hoher Interpretierbarkeit verbindet.
+Das Projekt zeigt, wie man ein kategoriales Dataset lädt, einfache Datenprobleme bereinigt und ein Klassifikationsmodell mit scikit-learn trainiert. Für unser Projekt ist der Decision Tree eine gute Wahl, weil er gute Ergebnisse liefert und noch relativ leicht erklärbar ist.
 
-## Dokumentation der LLM-Nutzung
+## LLM-Nutzung
 
-Large Language Models wurden zur Strukturierung des Projekts, zur Unterstützung bei der Datenprüfung, zur Entwicklung der ML-Strategie und zum Formulieren erklärender Texte genutzt. Die Gruppe bleibt verantwortlich dafür, den Code, die Datenbereinigung und die Modellierung vollständig zu verstehen und erklären zu können.
+Wir haben ein LLM zur Unterstützung bei Struktur, Datenprüfung und Formulierungen genutzt. Die Gruppe ist verantwortlich dafür, den Code und die Ergebnisse erklären zu können.
