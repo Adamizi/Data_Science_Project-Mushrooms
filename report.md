@@ -10,6 +10,7 @@ Wir haben uns an der Struktur aus dem Unterrichtsnotebook zur supervised classif
 
 - Daten laden
 - Daten kurz explorieren
+- einfache Diagramme zur Zielvariable, zu fehlenden Werten und zu `odor` erstellen
 - Input und Output trennen
 - Train/Test-Split erstellen
 - Daten vorverarbeiten
@@ -22,7 +23,7 @@ Die Datei war mit `~` getrennt und nicht mit Komma. Außerdem gab es drei Zeilen
 
 ## Ergebnis
 
-Der Entscheidungsbaum und KNN erreichen sehr gute Ergebnisse. Das liegt vermutlich daran, dass manche Merkmale, zum Beispiel `odor`, sehr stark mit der Zielvariable zusammenhängen.
+Der Entscheidungsbaum und KNN erreichen sehr gute Ergebnisse. Das liegt vermutlich daran, dass manche Merkmale, zum Beispiel `odor`, sehr stark mit der Zielvariable zusammenhängen. Im Notebook sieht man das auch in einem einfachen Balkendiagramm.
 
 ## Fazit
 
