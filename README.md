@@ -1,4 +1,4 @@
-# Data Science Project: Mushrooms
+# Data-Science-Projekt: Pilze
 
 Gruppenprojekt zur Klassifikation von Pilzen als essbar oder giftig.
 
@@ -12,4 +12,4 @@ Gruppenprojekt zur Klassifikation von Pilzen als essbar oder giftig.
 
 ## Kurzbeschreibung
 
-Das Projekt nutzt einen Decision Tree, um die Zielvariable `poison` vorherzusagen. Vorher werden einfache Datenprobleme bereinigt und kategoriale Variablen mit One-Hot-Encoding vorbereitet.
+Das Projekt nutzt einen Entscheidungsbaum, um die Zielvariable `poison` vorherzusagen. Vorher werden einfache Datenprobleme bereinigt und kategoriale Variablen mit One-Hot-Encoding vorbereitet.
